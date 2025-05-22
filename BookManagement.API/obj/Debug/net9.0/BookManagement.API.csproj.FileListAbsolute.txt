@@ -34,3 +34,4 @@
 /Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/obj/Debug/net9.0/BookManagement.API.pdb
 /Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/obj/Debug/net9.0/BookManagement.API.genruntimeconfig.cache
 /Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/obj/Debug/net9.0/ref/BookManagement.API.dll
+/Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/obj/Debug/net9.0/BookManagement.API.sourcelink.json
