@@ -148,5 +148,3 @@ The application validates book information with the following rules:
 - Book cover image upload
 - Persistent database (SQL Server, PostgreSQL)
 - Unit and integration tests
-# BookManagement-System
-# BookManagement-System

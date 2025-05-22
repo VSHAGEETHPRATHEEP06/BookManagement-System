@@ -1,0 +1,123 @@
+<div class="book-form-container">
+  <div class="form-header">
+    <h1>
+      <i class="material-icons icon-title">{{titleIcon}}</i>
+      {{pageTitle}}
+    </h1>
+    <button class="btn btn-secondary" (click)="cancel()"><i class="material-icons">arrow_back</i> Back to List</button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading && isEditMode" class="loading">
+    <div class="spinner"></div>
+    <p>Loading book details...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Form -->
+  <div *ngIf="!loading || !isEditMode" class="form-card">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Title Field -->
+      <div class="form-group">
+        <label for="title"><i class="material-icons form-icon">title</i> Book Title *</label>
+        <input 
+          type="text" 
+          id="title"
+          formControlName="title"
+          class="form-control"
+          [class.invalid]="title?.invalid && title?.touched"
+          placeholder="Enter book title"
+        >
+        <div *ngIf="title?.invalid && title?.touched" class="error-message">
+          <span *ngIf="title?.errors?.['required']">Title is required</span>
+          <span *ngIf="title?.errors?.['minlength']">Title must be at least 2 characters</span>
+          <span *ngIf="title?.errors?.['maxlength']">Title must not exceed 200 characters</span>
+        </div>
+      </div>
+
+      <!-- Author Field -->
+      <div class="form-group">
+        <label for="author"><i class="material-icons form-icon">person</i> Author *</label>
+        <input 
+          type="text" 
+          id="author"
+          formControlName="author"
+          class="form-control"
+          [class.invalid]="author?.invalid && author?.touched"
+          placeholder="Enter author name"
+        >
+        <div *ngIf="author?.invalid && author?.touched" class="error-message">
+          <span *ngIf="author?.errors?.['required']">Author is required</span>
+          <span *ngIf="author?.errors?.['minlength']">Author must be at least 2 characters</span>
+          <span *ngIf="author?.errors?.['maxlength']">Author must not exceed 100 characters</span>
+        </div>
+      </div>
+
+      <!-- ISBN Field -->
+      <div class="form-group">
+        <label for="isbn"><i class="material-icons form-icon">bookmark</i> ISBN *</label>
+        <input 
+          type="text" 
+          id="isbn"
+          formControlName="isbn"
+          class="form-control"
+          [class.invalid]="isbn?.invalid && isbn?.touched"
+          placeholder="Enter ISBN (10 or 13 digits)"
+        >
+        <div *ngIf="isbn?.invalid && isbn?.touched" class="error-message">
+          <span *ngIf="isbn?.errors?.['required']">ISBN is required</span>
+          <span *ngIf="isbn?.errors?.['pattern']">Please enter a valid ISBN (10 or 13 digits)</span>
+        </div>
+        <small class="help-text">Example: 978-0132350884 or 0132350882</small>
+      </div>
+
+      <!-- Publication Date Field -->
+      <div class="form-group">
+        <label for="publicationDate"><i class="material-icons form-icon">event</i> Publication Date *</label>
+        <input 
+          type="date" 
+          id="publicationDate"
+          formControlName="publicationDate"
+          class="form-control"
+          [class.invalid]="publicationDate?.invalid && publicationDate?.touched"
+        >
+        <div *ngIf="publicationDate?.invalid && publicationDate?.touched" class="error-message">
+          <span *ngIf="publicationDate?.errors?.['required']">Publication date is required</span>
+          <span *ngIf="publicationDate?.errors?.['futureDate']">Publication date cannot be in the future</span>
+          <span *ngIf="publicationDate?.errors?.['tooOld']">Publication date cannot be before 1900</span>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button 
+          type="button" 
+          class="btn btn-secondary" 
+          (click)="cancel()"
+          [disabled]="loading"
+        >
+          <i class="material-icons">cancel</i> Cancel
+        </button>
+        <button 
+          type="submit" 
+          class="btn btn-primary"
+          [disabled]="bookForm.invalid || loading"
+        >
+          <span *ngIf="loading">
+            <div class="button-spinner"></div>
+            {{ isEditMode ? 'Updating...' : 'Creating...' }}
+          </span>
+          <span *ngIf="!loading">
+            <i class="material-icons">{{ isEditMode ? 'save' : 'add' }}</i>
+            {{ isEditMode ? 'Update Book' : 'Create Book' }}
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
