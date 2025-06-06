@@ -1,0 +1,43 @@
+<div class="widget-container">
+  <div class="widget-header">
+    <h3><i class="material-icons widget-icon">menu_book</i> Classic Collection</h3>
+    <span class="widget-subtitle">10 oldest publications</span>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading classic books...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+    <button class="btn btn-retry" (click)="loadOldestBooks()">Retry</button>
+  </div>
+
+  <div *ngIf="!loading && !error" class="books-list">
+    <div class="book-item" *ngFor="let book of books; trackBy: trackById">
+      <div class="book-id">{{ book.id }}</div>
+      <div class="book-details">
+        <h4 class="book-title">
+          <i class="material-icons title-icon">auto_stories</i>
+          {{ book.title }}
+        </h4>
+        <p class="book-meta">
+          <span class="isbn">
+            <i class="material-icons meta-icon">bookmark</i>
+            {{ book.isbn }}
+          </span>
+          <span class="separator">•</span>
+          <span class="publication-date">
+            <i class="material-icons meta-icon">event</i>
+            {{ book.publicationDate | date:'yyyy' }}
+          </span>
+        </p>
+      </div>
+      <div class="book-year">
+        <i class="material-icons year-icon">schedule</i>
+        {{ book.publicationDate | date:'yyyy' }}
+      </div>
+    </div>
+  </div>
+</div>

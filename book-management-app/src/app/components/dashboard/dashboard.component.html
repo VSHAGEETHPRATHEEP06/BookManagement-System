@@ -1,0 +1,35 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1><i class="material-icons header-icon">dashboard</i> Welcome to Dashboard</h1>
+    <p class="dashboard-subtitle">Overview of our book collection</p>
+    <div class="header-actions">
+      <button class="btn btn-primary" routerLink="/books">
+        <i class="material-icons">library_books</i> View All Books
+      </button>
+      <button class="btn btn-secondary" routerLink="/add">
+        <i class="material-icons">add</i> Add New Book
+      </button>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+    <!-- Widget 1: Latest Books Table -->
+    <div class="widget-card widget-table">
+      <app-latest-books-table></app-latest-books-table>
+    </div>
+
+    <!-- Widget 2: Oldest Books List -->
+    <div class="widget-card widget-list">
+      <app-oldest-books-list></app-oldest-books-list>
+    </div>
+
+    <!-- Widget 3: Author Books Chart -->
+    <div class="widget-card widget-chart">
+      <app-author-books-chart></app-author-books-chart>
+    </div>
+  </div>
+
+  <div class="dashboard-footer">
+    <p><i class="material-icons">auto_stories</i> Book Management System Dashboard</p>
+  </div>
+</div>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/BookManagement.API.csproj": {}
+    "/Users/shageethpratheepvaratharajan/Downloads/BookManagement-System/BookManagement.API/BookManagement.API.csproj": {}
   },
   "projects": {
-    "/Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/BookManagement.API.csproj": {
+    "/Users/shageethpratheepvaratharajan/Downloads/BookManagement-System/BookManagement.API/BookManagement.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/BookManagement.API.csproj",
+        "projectUniqueName": "/Users/shageethpratheepvaratharajan/Downloads/BookManagement-System/BookManagement.API/BookManagement.API.csproj",
         "projectName": "BookManagement.API",
-        "projectPath": "/Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/BookManagement.API.csproj",
+        "projectPath": "/Users/shageethpratheepvaratharajan/Downloads/BookManagement-System/BookManagement.API/BookManagement.API.csproj",
         "packagesPath": "/Users/shageethpratheepvaratharajan/.nuget/packages/",
-        "outputPath": "/Users/shageethpratheepvaratharajan/BookManagement-Assignment/BookManagement.API/obj/",
+        "outputPath": "/Users/shageethpratheepvaratharajan/Downloads/BookManagement-System/BookManagement.API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/shageethpratheepvaratharajan/.nuget/NuGet/NuGet.Config"

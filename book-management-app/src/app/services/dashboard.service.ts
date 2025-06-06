@@ -2,49 +2,45 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Book, CreateBookRequest, UpdateBookRequest } from '../models/book.model';
+import { Book } from '../models/book.model';
+import { AuthorBookCount, DashboardSummary } from '../models/dashboard.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
-  private apiUrl = 'http://localhost:5000/api/books';
+export class DashboardService {
+  private apiUrl = 'http://localhost:5000/api/dashboard';
 
   constructor(private http: HttpClient) { }
 
-  getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.apiUrl)
+  getLatestBooks(count: number = 5): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/latest-books?count=${count}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
       );
   }
 
-  getBook(id: number): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}/${id}`)
+  getOldestBooks(count: number = 10): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/oldest-books?count=${count}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
       );
   }
 
-  createBook(book: CreateBookRequest): Observable<Book> {
-    return this.http.post<Book>(this.apiUrl, book)
+  getBooksByAuthor(): Observable<AuthorBookCount[]> {
+    return this.http.get<AuthorBookCount[]>(`${this.apiUrl}/books-by-author`)
       .pipe(
+        retry(1),
         catchError(this.handleError)
       );
   }
 
-  updateBook(id: number, book: UpdateBookRequest): Observable<Book> {
-    return this.http.put<Book>(`${this.apiUrl}/${id}`, book)
+  getDashboardSummary(): Observable<DashboardSummary> {
+    return this.http.get<DashboardSummary>(`${this.apiUrl}/summary`)
       .pipe(
-        catchError(this.handleError)
-      );
-  }
-
-  deleteBook(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`)
-      .pipe(
+        retry(1),
         catchError(this.handleError)
       );
   }
@@ -53,10 +49,8 @@ export class BookService {
     let errorMessage = 'An unknown error occurred!';
     
     if (error.error instanceof ErrorEvent) {
-      // Client-side error
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // Server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     

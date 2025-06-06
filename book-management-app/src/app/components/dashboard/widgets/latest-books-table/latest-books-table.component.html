@@ -1,0 +1,37 @@
+<div class="widget-container">
+  <div class="widget-header">
+    <h3><i class="material-icons widget-icon">library_books</i> Latest Books</h3>
+    <span class="widget-subtitle">5 most recently added</span>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading latest books...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+    <button class="btn btn-retry" (click)="loadLatestBooks()">Retry</button>
+  </div>
+
+  <div *ngIf="!loading && !error" class="table-container">
+    <table class="books-table">
+      <thead>
+        <tr>
+          <th><i class="material-icons table-icon">tag</i> ID</th>
+          <th><i class="material-icons table-icon">title</i> Title</th>
+          <th><i class="material-icons table-icon">person</i> Author</th>
+          <th><i class="material-icons table-icon">bookmark</i> ISBN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books; trackBy: trackById">
+          <td>{{ book.id }}</td>
+          <td class="title-cell">{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td class="isbn-cell">{{ book.isbn }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

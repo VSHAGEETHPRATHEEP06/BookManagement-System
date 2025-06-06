@@ -7,9 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app/app.component';
 import { BookListComponent } from './app/components/book-list/book-list.component';
 import { BookFormComponent } from './app/components/book-form/book-form.component';
+import { DashboardComponent } from './app/components/dashboard/dashboard.component';
 
 const routes = [
-  { path: '', component: BookListComponent },
+  { path: '', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'books', component: BookListComponent },
   { path: 'add', component: BookFormComponent },
   { path: 'edit/:id', component: BookFormComponent },
   { path: '**', redirectTo: '' }

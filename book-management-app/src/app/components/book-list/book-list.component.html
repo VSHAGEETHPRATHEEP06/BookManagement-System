@@ -1,9 +1,14 @@
 <div class="book-list-container">
   <div class="header">
     <h1><i class="material-icons icon-title">library_books</i> Book Management System</h1>
-    <button class="btn btn-primary" (click)="addNewBook()">
-      <i class="material-icons">add</i> Add New Book
-    </button>
+    <div class="header-actions">
+      <button class="btn btn-secondary" routerLink="/">
+        <i class="material-icons">dashboard</i> Dashboard
+      </button>
+      <button class="btn btn-primary" (click)="addNewBook()">
+        <i class="material-icons">add</i> Add New Book
+      </button>
+    </div>
   </div>
 
   <!-- Loading State -->
@@ -22,14 +27,15 @@
   <div *ngIf="!loading && !error && books.length === 0" class="empty-state">
     <h2><i class="material-icons">import_contacts</i> No books available</h2>
     <p>Start building your library by adding your first book!</p>
-    <button class="btn btn-primary" (click)="addNewBook()"><i class="material-icons">add</i> Add Your First Book</button>
+    <button class="btn btn-primary" (click)="addNewBook()">
+      <i class="material-icons">add</i> Add Your First Book
+    </button>
   </div>
 
   <!-- Books Grid -->
   <div *ngIf="!loading && !error && books.length > 0" class="books-grid">
     <div class="book-card" *ngFor="let book of books; trackBy: trackByBookId">
       <h3 class="book-title">{{ book.title }}</h3>
-      
       <div class="book-info">
         <div class="book-detail">
           <i class="material-icons info-icon">person</i>
@@ -38,7 +44,6 @@
             <span class="detail-value">{{ book.author }}</span>
           </div>
         </div>
-        
         <div class="book-detail">
           <i class="material-icons info-icon">bookmark</i>
           <div>
@@ -46,7 +51,6 @@
             <span class="detail-value">{{ book.isbn }}</span>
           </div>
         </div>
-        
         <div class="book-detail">
           <i class="material-icons info-icon">event</i>
           <div>
@@ -55,7 +59,6 @@
           </div>
         </div>
       </div>
-      
       <div class="book-actions">
         <button class="btn btn-edit" (click)="editBook(book)" title="Edit book">
           <i class="material-icons">edit</i>
